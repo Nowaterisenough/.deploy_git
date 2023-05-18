@@ -24,7 +24,7 @@
 <meta property="og:description" content="Factory Method 工厂方法模式亦称虚拟构造函数、Virtual Constructor、Factory Method 目的工厂方法模式是一种创建型设计模式， 其在父类中提供一个创建对象的方法， 允许子类决定实例化对象的类型。 代码#include &lt;iostream&gt; #include &lt;string&gt;  &#x2F;**  * The Product interface decla">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-18T19:07:35.065Z">
-<meta property="article:modified_time" content="2023-05-18T22:16:17.893Z">
+<meta property="article:modified_time" content="2023-05-18T22:22:33.963Z">
 <meta property="article:author" content="难为水">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -298,13 +298,19 @@
 <span class="token keyword">class</span> <span class="token class-name">ConcreteProduct1</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">Product</span></span>
 <span class="token punctuation">&#123;</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
-  std<span class="token double-colon punctuation">::</span>string <span class="token function">Operation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token keyword">override</span> <span class="token punctuation">&#123;</span> <span class="token keyword">return</span> <span class="token string">"&#123;Result of the ConcreteProduct1&#125;"</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>
+  std<span class="token double-colon punctuation">::</span>string <span class="token function">Operation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token keyword">override</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token string">"&#123;Result of the ConcreteProduct1&#125;"</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 
 <span class="token keyword">class</span> <span class="token class-name">ConcreteProduct2</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">Product</span></span>
 <span class="token punctuation">&#123;</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
-  std<span class="token double-colon punctuation">::</span>string <span class="token function">Operation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token keyword">override</span> <span class="token punctuation">&#123;</span> <span class="token keyword">return</span> <span class="token string">"&#123;Result of the ConcreteProduct2&#125;"</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>
+  std<span class="token double-colon punctuation">::</span>string <span class="token function">Operation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token keyword">override</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token string">"&#123;Result of the ConcreteProduct2&#125;"</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 
 <span class="token comment">/**
@@ -336,7 +342,9 @@
     <span class="token comment">// Call the factory method to create a Product object.</span>
     Product <span class="token operator">*</span>product <span class="token operator">=</span> <span class="token keyword">this</span><span class="token operator">-></span><span class="token function">FactoryMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token comment">// Now, use the product.</span>
-    std<span class="token double-colon punctuation">::</span>string result <span class="token operator">=</span> <span class="token string">"Creator: The same creator's code has just worked with "</span> <span class="token operator">+</span> product<span class="token operator">-></span><span class="token function">Operation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>string result <span class="token operator">=</span>
+      <span class="token string">"Creator: The same creator's code has just worked with "</span> <span class="token operator">+</span>
+      product<span class="token operator">-></span><span class="token function">Operation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">delete</span> product<span class="token punctuation">;</span>
     <span class="token keyword">return</span> result<span class="token punctuation">;</span>
   <span class="token punctuation">&#125;</span>
@@ -372,8 +380,9 @@
 <span class="token keyword">void</span> <span class="token function">ClientCode</span><span class="token punctuation">(</span><span class="token keyword">const</span> Creator <span class="token operator">&amp;</span>creator<span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
   <span class="token comment">// ...</span>
-  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Client: I'm not aware of the creator's class, but it still works.\n"</span>
-            <span class="token operator">&lt;&lt;</span> creator<span class="token punctuation">.</span><span class="token function">SomeOperation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout
+    <span class="token operator">&lt;&lt;</span> <span class="token string">"Client: I'm not aware of the creator's class, but it still works.\n"</span>
+    <span class="token operator">&lt;&lt;</span> creator<span class="token punctuation">.</span><span class="token function">SomeOperation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
   <span class="token comment">// ...</span>
 <span class="token punctuation">&#125;</span>
 
@@ -395,7 +404,7 @@
   <span class="token keyword">delete</span> creator<span class="token punctuation">;</span>
   <span class="token keyword">delete</span> creator2<span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
 <h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure><div class="code-wrapper"><pre class="line-numbers language-text" data-language="text"><code class="language-text">App: Launched with the ConcreteCreator1.
 Client: I'm not aware of the creator's class, but it still works.
@@ -408,7 +417,7 @@ Creator: The same creator's code has just worked with &#123;Result of the Concre
 <style>
   .markdown-body pre code {
     font-family: Monaco, monospace !important; 
-    font-size: 90% !important; 
+    font-size: 95% !important; 
     line-height: 1.8 !important; 
 }
 </style>
