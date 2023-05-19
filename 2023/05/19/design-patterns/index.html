@@ -16,15 +16,15 @@
   <meta name="author" content="难为水">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Factory Method | 工厂方法模式亦称虚拟构造函数、Virtual Constructor、Factory Method 概念工厂方法模式是一种创建型设计模式， 其在父类中提供一个创建对象的方法， 允许子类决定实例化对象的类型。 代码#include &lt;iostream&gt; #include &lt;string&gt;  &#x2F;**  * The Product interface dec">
+    <meta name="description" content="Factory Method | 工厂方法模式亦称虚拟构造函数、Virtual Constructor 概念工厂方法模式是一种创建型设计模式， 其在父类中提供一个创建对象的方法， 允许子类决定实例化对象的类型。 工厂方法定义了一个方法， 且必须使用该方法代替通过直接调用构造函数来创建对象 （ new操作符） 的方式。 子类可重写该方法来更改将被创建的对象所属类。 场景假设你正在开发一款物流管理应用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Design Patterns | 设计模式">
 <meta property="og:url" content="https://nowaterisenough.github.io/2023/05/19/design-patterns/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Factory Method | 工厂方法模式亦称虚拟构造函数、Virtual Constructor、Factory Method 概念工厂方法模式是一种创建型设计模式， 其在父类中提供一个创建对象的方法， 允许子类决定实例化对象的类型。 代码#include &lt;iostream&gt; #include &lt;string&gt;  &#x2F;**  * The Product interface dec">
+<meta property="og:description" content="Factory Method | 工厂方法模式亦称虚拟构造函数、Virtual Constructor 概念工厂方法模式是一种创建型设计模式， 其在父类中提供一个创建对象的方法， 允许子类决定实例化对象的类型。 工厂方法定义了一个方法， 且必须使用该方法代替通过直接调用构造函数来创建对象 （ new操作符） 的方式。 子类可重写该方法来更改将被创建的对象所属类。 场景假设你正在开发一款物流管理应用">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-18T19:07:35.065Z">
-<meta property="article:modified_time" content="2023-05-19T06:39:32.519Z">
+<meta property="article:modified_time" content="2023-05-19T06:50:51.698Z">
 <meta property="article:author" content="难为水">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.5k 字
+          13k 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          71 分钟
+          107 分钟
         
       </span>
     
@@ -275,8 +275,13 @@
             
               <div class="markdown-body">
                 
-                <h2 id="Factory-Method-工厂方法模式"><a href="#Factory-Method-工厂方法模式" class="headerlink" title="Factory Method | 工厂方法模式"></a>Factory Method | 工厂方法模式</h2><p>亦称虚拟构造函数、Virtual Constructor、Factory Method</p>
+                <h2 id="Factory-Method-工厂方法模式"><a href="#Factory-Method-工厂方法模式" class="headerlink" title="Factory Method | 工厂方法模式"></a>Factory Method | 工厂方法模式</h2><p>亦称虚拟构造函数、Virtual Constructor</p>
 <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>工厂方法模式是一种创建型设计模式， 其在父类中提供一个创建对象的方法， 允许子类决定实例化对象的类型。</p>
+<p>工厂方法定义了一个方法， 且必须使用该方法代替通过直接调用构造函数来创建对象 （ new操作符） 的方式。 子类可重写该方法来更改将被创建的对象所属类。</p>
+<h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><p>假设你正在开发一款物流管理应用。 最初版本只能处理卡车运输， 因此大部分代码都在位于名为 卡车的类中。</p>
+<p>一段时间后， 这款应用变得极受欢迎。 你每天都能收到十几次来自海运公司的请求， 希望应用能够支持海上物流功能。</p>
+<p>这可是个好消息。 但是代码问题该如何处理呢？ 目前， 大部分代码都与 卡车类相关。 在程序中添加 轮船类需要修改全部代码。 更糟糕的是， 如果你以后需要在程序中支持另外一种运输方式， 很可能需要再次对这些代码进行大幅修改。</p>
+<p>最后， 你将不得不编写繁复的代码， 根据不同的运输对象类， 在应用中进行不同的处理。</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string></span></span>
 
@@ -406,7 +411,7 @@
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure><div class="code-wrapper"><pre class="line-numbers language-text" data-language="text"><code class="language-text">App: Launched with the ConcreteCreator1.
+<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><figure><div class="code-wrapper"><pre class="line-numbers language-text" data-language="text"><code class="language-text">App: Launched with the ConcreteCreator1.
 Client: I'm not aware of the creator's class, but it still works.
 Creator: The same creator's code has just worked with &#123;Result of the ConcreteProduct1&#125;
 
@@ -418,14 +423,14 @@ Creator: The same creator's code has just worked with &#123;Result of the Concre
 <p>抽象工厂定义了用于创建不同产品的接口， 但将实际的创建工作留给了具体工厂类。 每个工厂类型都对应一个特定的产品变体。</p>
 <p>在创建产品时， 客户端代码调用的是工厂对象的构建方法， 而不是直接调用构造函数 （ new操作符）。 由于一个工厂对应一种产品变体， 因此它创建的所有产品都可相互兼容。</p>
 <p>客户端代码仅通过其抽象接口与工厂和产品进行交互。 该接口允许同一客户端代码与不同产品进行交互。 你只需创建一个具体工厂类并将其传递给客户端代码即可。</p>
-<p>假设你正在开发一款家具商店模拟器。 你的代码中包括一些类， 用于表示：</p>
+<h3 id="场景-1"><a href="#场景-1" class="headerlink" title="场景"></a>场景</h3><p>假设你正在开发一款家具商店模拟器。 你的代码中包括一些类， 用于表示：</p>
 <ol>
 <li><p>一系列相关产品， 例如 椅子Chair 、 ​ 沙发Sofa和 咖啡桌Coffee­Table 。</p>
 </li>
 <li><p>系列产品的不同变体。 例如， 你可以使用 现代Modern 、 ​ 维多利亚Victorian 、 ​ 装饰风艺术Art­Deco等风格生成 椅子 、 ​ 沙发和 咖啡桌 。</p>
 </li>
 </ol>
-<p>你需要设法单独生成每件家具对象， 这样才能确保其风格一致。<br>此外， 你也不希望在添加新产品或新风格时修改已有代码。</p>
+<p>你需要设法单独生成每件家具对象， 这样才能确保其风格一致。 此外， 你也不希望在添加新产品或新风格时修改已有代码。</p>
 <h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/**
  * Each distinct product of a product family should have a base interface. All
  * variants of the product must implement this interface.
@@ -603,13 +608,190 @@ Creator: The same creator's code has just worked with &#123;Result of the Concre
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h3><figure><div class="code-wrapper"><pre class="line-numbers language-text" data-language="text"><code class="language-text">Client: Testing client code with the first factory type:
+<h4 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h4><figure><div class="code-wrapper"><pre class="line-numbers language-text" data-language="text"><code class="language-text">Client: Testing client code with the first factory type:
 The result of the product B1.
 The result of the B1 collaborating with the (The result of the product A1.)
 
 Client: Testing the same client code with the second factory type:
 The result of the product B2.
 The result of the B2 collaborating with the (The result of the product A2.)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h2 id="Adapter-适配器模式"><a href="#Adapter-适配器模式" class="headerlink" title="Adapter | 适配器模式"></a>Adapter | 适配器模式</h2><p>亦称： 封装器模式、Wrapper</p>
+<h3 id="概念-2"><a href="#概念-2" class="headerlink" title="概念"></a>概念</h3><p>适配器模式是一种结构型设计模式， 它能使接口不兼容的对象能够相互合作。</p>
+<p>适配器可担任两个对象间的封装器， 它会接收对于一个对象的调用， 并将其转换为另一个对象可识别的格式和接口。</p>
+<h3 id="场景-2"><a href="#场景-2" class="headerlink" title="场景"></a>场景</h3><p>假如你正在开发一款股票市场监测程序， 它会从不同来源下载 XML 格式的股票数据， 然后向用户呈现出美观的图表。</p>
+<p>在开发过程中， 你决定在程序中整合一个第三方智能分析函数库。 但是遇到了一个问题， 那就是分析函数库只兼容 JSON 格式的数据。</p>
+<p>你可以修改程序库来支持 XML。 但是， 这可能需要修改部分依赖该程序库的现有代码。 甚至还有更糟糕的情况， 你可能根本没有程序库的源代码， 从而无法对其进行修改。</p>
+<h3 id="代码-概念示例"><a href="#代码-概念示例" class="headerlink" title="代码 - 概念示例"></a>代码 - 概念示例</h3><figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/**
+ * The Target defines the domain-specific interface used by the client code.
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">Target</span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">Target</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">default</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">virtual</span> std<span class="token double-colon punctuation">::</span>string <span class="token function">Request</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token string">"Target: The default target's behavior."</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * The Adaptee contains some useful behavior, but its interface is incompatible
+ * with the existing client code. The Adaptee needs some adaptation before the
+ * client code can use it.
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">Adaptee</span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  std<span class="token double-colon punctuation">::</span>string <span class="token function">SpecificRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token string">".eetpadA eht fo roivaheb laicepS"</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * The Adapter makes the Adaptee's interface compatible with the Target's
+ * interface.
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">Adapter</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">Target</span></span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">private</span><span class="token operator">:</span>
+  Adaptee <span class="token operator">*</span>adaptee_<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token function">Adapter</span><span class="token punctuation">(</span>Adaptee <span class="token operator">*</span>adaptee<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">adaptee_</span><span class="token punctuation">(</span>adaptee<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+  std<span class="token double-colon punctuation">::</span>string <span class="token function">Request</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token keyword">override</span>
+  <span class="token punctuation">&#123;</span>
+    std<span class="token double-colon punctuation">::</span>string to_reverse <span class="token operator">=</span> <span class="token keyword">this</span><span class="token operator">-></span>adaptee_<span class="token operator">-></span><span class="token function">SpecificRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span><span class="token function">reverse</span><span class="token punctuation">(</span>to_reverse<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> to_reverse<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token string">"Adapter: (TRANSLATED) "</span> <span class="token operator">+</span> to_reverse<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * The client code supports all classes that follow the Target interface.
+ */</span>
+<span class="token keyword">void</span> <span class="token function">ClientCode</span><span class="token punctuation">(</span><span class="token keyword">const</span> Target <span class="token operator">*</span>target<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> target<span class="token operator">-></span><span class="token function">Request</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Client: I can work just fine with the Target objects:\n"</span><span class="token punctuation">;</span>
+  Target <span class="token operator">*</span>target <span class="token operator">=</span> <span class="token keyword">new</span> Target<span class="token punctuation">;</span>
+  <span class="token function">ClientCode</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"\n\n"</span><span class="token punctuation">;</span>
+  Adaptee <span class="token operator">*</span>adaptee <span class="token operator">=</span> <span class="token keyword">new</span> Adaptee<span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Client: The Adaptee class has a weird interface. See, I don't "</span>
+               <span class="token string">"understand it:\n"</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Adaptee: "</span> <span class="token operator">&lt;&lt;</span> adaptee<span class="token operator">-></span><span class="token function">SpecificRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"\n\n"</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Client: But I can work with it via the Adapter:\n"</span><span class="token punctuation">;</span>
+  Adapter <span class="token operator">*</span>adapter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Adapter</span><span class="token punctuation">(</span>adaptee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">ClientCode</span><span class="token punctuation">(</span>adapter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">delete</span> target<span class="token punctuation">;</span>
+  <span class="token keyword">delete</span> adaptee<span class="token punctuation">;</span>
+  <span class="token keyword">delete</span> adapter<span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h4 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h4><figure><div class="code-wrapper"><pre class="line-numbers language-text" data-language="text"><code class="language-text">Client: I can work just fine with the Target objects:
+Target: The default target's behavior.
+
+Client: The Adaptee class has a weird interface. See, I don't understand it:
+Adaptee: .eetpadA eht fo roivaheb laicepS
+
+Client: But I can work with it via the Adapter:
+Adapter: (TRANSLATED) Special behavior of the Adaptee.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="代码-多重继承"><a href="#代码-多重继承" class="headerlink" title="代码 - 多重继承"></a>代码 - 多重继承</h3><p>在 C++ 中， 可以使用多重继承来实现适配器模式。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/**
+ * The Target defines the domain-specific interface used by the client code.
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">Target</span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">Target</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">default</span><span class="token punctuation">;</span>
+  <span class="token keyword">virtual</span> std<span class="token double-colon punctuation">::</span>string <span class="token function">Request</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token string">"Target: The default target's behavior."</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * The Adaptee contains some useful behavior, but its interface is incompatible
+ * with the existing client code. The Adaptee needs some adaptation before the
+ * client code can use it.
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">Adaptee</span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  std<span class="token double-colon punctuation">::</span>string <span class="token function">SpecificRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token string">".eetpadA eht fo roivaheb laicepS"</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * The Adapter makes the Adaptee's interface compatible with the Target's
+ * interface using multiple inheritance.
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">Adapter</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">Target</span><span class="token punctuation">,</span> <span class="token keyword">public</span> <span class="token class-name">Adaptee</span></span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token function">Adapter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+  std<span class="token double-colon punctuation">::</span>string <span class="token function">Request</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token keyword">override</span>
+  <span class="token punctuation">&#123;</span>
+    std<span class="token double-colon punctuation">::</span>string to_reverse <span class="token operator">=</span> <span class="token function">SpecificRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span><span class="token function">reverse</span><span class="token punctuation">(</span>to_reverse<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> to_reverse<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token string">"Adapter: (TRANSLATED) "</span> <span class="token operator">+</span> to_reverse<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * The client code supports all classes that follow the Target interface.
+ */</span>
+<span class="token keyword">void</span> <span class="token function">ClientCode</span><span class="token punctuation">(</span><span class="token keyword">const</span> Target <span class="token operator">*</span>target<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> target<span class="token operator">-></span><span class="token function">Request</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Client: I can work just fine with the Target objects:\n"</span><span class="token punctuation">;</span>
+  Target <span class="token operator">*</span>target <span class="token operator">=</span> <span class="token keyword">new</span> Target<span class="token punctuation">;</span>
+  <span class="token function">ClientCode</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"\n\n"</span><span class="token punctuation">;</span>
+  Adaptee <span class="token operator">*</span>adaptee <span class="token operator">=</span> <span class="token keyword">new</span> Adaptee<span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Client: The Adaptee class has a weird interface. See, I don't "</span>
+               <span class="token string">"understand it:\n"</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Adaptee: "</span> <span class="token operator">&lt;&lt;</span> adaptee<span class="token operator">-></span><span class="token function">SpecificRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"\n\n"</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Client: But I can work with it via the Adapter:\n"</span><span class="token punctuation">;</span>
+  Adapter <span class="token operator">*</span>adapter <span class="token operator">=</span> <span class="token keyword">new</span> Adapter<span class="token punctuation">;</span>
+  <span class="token function">ClientCode</span><span class="token punctuation">(</span>adapter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">delete</span> target<span class="token punctuation">;</span>
+  <span class="token keyword">delete</span> adaptee<span class="token punctuation">;</span>
+  <span class="token keyword">delete</span> adapter<span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h4 id="输出-3"><a href="#输出-3" class="headerlink" title="输出"></a>输出</h4><figure><div class="code-wrapper"><pre class="line-numbers language-text" data-language="text"><code class="language-text">Client: I can work just fine with the Target objects:
+Target: The default target's behavior.
+
+Client: The Adaptee class has a weird interface. See, I don't understand it:
+Adaptee: .eetpadA eht fo roivaheb laicepS
+
+Client: But I can work with it via the Adapter:
+Adapter: (TRANSLATED) Special behavior of the Adaptee.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
 <style>
   .markdown-body pre code {
