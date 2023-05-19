@@ -16,15 +16,15 @@
   <meta name="author" content="难为水">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Factory Method | 工厂方法模式亦称虚拟构造函数、Virtual Constructor、Factory Method 目的工厂方法模式是一种创建型设计模式， 其在父类中提供一个创建对象的方法， 允许子类决定实例化对象的类型。 代码#include &lt;iostream&gt; #include &lt;string&gt;  &#x2F;**  * The Product interface dec">
+    <meta name="description" content="Factory Method | 工厂方法模式亦称虚拟构造函数、Virtual Constructor、Factory Method 概念工厂方法模式是一种创建型设计模式， 其在父类中提供一个创建对象的方法， 允许子类决定实例化对象的类型。 代码#include &lt;iostream&gt; #include &lt;string&gt;  &#x2F;**  * The Product interface dec">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Design Patterns | 设计模式">
 <meta property="og:url" content="https://nowaterisenough.github.io/2023/05/19/design-patterns/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Factory Method | 工厂方法模式亦称虚拟构造函数、Virtual Constructor、Factory Method 目的工厂方法模式是一种创建型设计模式， 其在父类中提供一个创建对象的方法， 允许子类决定实例化对象的类型。 代码#include &lt;iostream&gt; #include &lt;string&gt;  &#x2F;**  * The Product interface dec">
+<meta property="og:description" content="Factory Method | 工厂方法模式亦称虚拟构造函数、Virtual Constructor、Factory Method 概念工厂方法模式是一种创建型设计模式， 其在父类中提供一个创建对象的方法， 允许子类决定实例化对象的类型。 代码#include &lt;iostream&gt; #include &lt;string&gt;  &#x2F;**  * The Product interface dec">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-18T19:07:35.065Z">
-<meta property="article:modified_time" content="2023-05-19T00:41:40.620Z">
+<meta property="article:modified_time" content="2023-05-19T06:39:32.519Z">
 <meta property="article:author" content="难为水">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.4k 字
+          8.5k 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          29 分钟
+          71 分钟
         
       </span>
     
@@ -276,7 +276,7 @@
               <div class="markdown-body">
                 
                 <h2 id="Factory-Method-工厂方法模式"><a href="#Factory-Method-工厂方法模式" class="headerlink" title="Factory Method | 工厂方法模式"></a>Factory Method | 工厂方法模式</h2><p>亦称虚拟构造函数、Virtual Constructor、Factory Method</p>
-<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>工厂方法模式是一种创建型设计模式， 其在父类中提供一个创建对象的方法， 允许子类决定实例化对象的类型。</p>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>工厂方法模式是一种创建型设计模式， 其在父类中提供一个创建对象的方法， 允许子类决定实例化对象的类型。</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string></span></span>
 
@@ -413,6 +413,203 @@ Creator: The same creator's code has just worked with &#123;Result of the Concre
 App: Launched with the ConcreteCreator2.
 Client: I'm not aware of the creator's class, but it still works.
 Creator: The same creator's code has just worked with &#123;Result of the ConcreteProduct2&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h2 id="Abstract-Factory-抽象工厂模式"><a href="#Abstract-Factory-抽象工厂模式" class="headerlink" title="Abstract Factory | 抽象工厂模式"></a>Abstract Factory | 抽象工厂模式</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><p>工厂方法模式是一种创建型设计模式， 它能创建一系列相关的对象， 而无需指定其具体类。</p>
+<p>抽象工厂定义了用于创建不同产品的接口， 但将实际的创建工作留给了具体工厂类。 每个工厂类型都对应一个特定的产品变体。</p>
+<p>在创建产品时， 客户端代码调用的是工厂对象的构建方法， 而不是直接调用构造函数 （ new操作符）。 由于一个工厂对应一种产品变体， 因此它创建的所有产品都可相互兼容。</p>
+<p>客户端代码仅通过其抽象接口与工厂和产品进行交互。 该接口允许同一客户端代码与不同产品进行交互。 你只需创建一个具体工厂类并将其传递给客户端代码即可。</p>
+<p>假设你正在开发一款家具商店模拟器。 你的代码中包括一些类， 用于表示：</p>
+<ol>
+<li><p>一系列相关产品， 例如 椅子Chair 、 ​ 沙发Sofa和 咖啡桌Coffee­Table 。</p>
+</li>
+<li><p>系列产品的不同变体。 例如， 你可以使用 现代Modern 、 ​ 维多利亚Victorian 、 ​ 装饰风艺术Art­Deco等风格生成 椅子 、 ​ 沙发和 咖啡桌 。</p>
+</li>
+</ol>
+<p>你需要设法单独生成每件家具对象， 这样才能确保其风格一致。<br>此外， 你也不希望在添加新产品或新风格时修改已有代码。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/**
+ * Each distinct product of a product family should have a base interface. All
+ * variants of the product must implement this interface.
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">AbstractProductA</span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">AbstractProductA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+  <span class="token keyword">virtual</span> std<span class="token double-colon punctuation">::</span>string <span class="token function">UsefulFunctionA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * Concrete Products are created by corresponding Concrete Factories.
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">ConcreteProductA1</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">AbstractProductA</span></span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  std<span class="token double-colon punctuation">::</span>string <span class="token function">UsefulFunctionA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token keyword">override</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token string">"The result of the product A1."</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ConcreteProductA2</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">AbstractProductA</span></span>
+<span class="token punctuation">&#123;</span>
+  std<span class="token double-colon punctuation">::</span>string <span class="token function">UsefulFunctionA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token keyword">override</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token string">"The result of the product A2."</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * Here's the the base interface of another product. All products can interact
+ * with each other, but proper interaction is possible only between products of
+ * the same concrete variant.
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">AbstractProductB</span>
+<span class="token punctuation">&#123;</span>
+  <span class="token comment">/**
+   * Product B is able to do its own thing...
+   */</span>
+
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token keyword">virtual</span> <span class="token operator">~</span><span class="token function">AbstractProductB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+  <span class="token keyword">virtual</span> std<span class="token double-colon punctuation">::</span>string <span class="token function">UsefulFunctionB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token comment">/**
+   * ...but it also can collaborate with the ProductA.
+   *
+   * The Abstract Factory makes sure that all products it creates are of the
+   * same variant and thus, compatible.
+   */</span>
+  <span class="token keyword">virtual</span> std<span class="token double-colon punctuation">::</span>string
+  <span class="token function">AnotherUsefulFunctionB</span><span class="token punctuation">(</span><span class="token keyword">const</span> AbstractProductA <span class="token operator">&amp;</span>collaborator<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * Concrete Products are created by corresponding Concrete Factories.
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">ConcreteProductB1</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">AbstractProductB</span></span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  std<span class="token double-colon punctuation">::</span>string <span class="token function">UsefulFunctionB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token keyword">override</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token string">"The result of the product B1."</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token comment">/**
+   * The variant, Product B1, is only able to work correctly with the variant,
+   * Product A1. Nevertheless, it accepts any instance of AbstractProductA as an
+   * argument.
+   */</span>
+  std<span class="token double-colon punctuation">::</span>string <span class="token function">AnotherUsefulFunctionB</span><span class="token punctuation">(</span><span class="token keyword">const</span> AbstractProductA <span class="token operator">&amp;</span>collaborator<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token keyword">override</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> std<span class="token double-colon punctuation">::</span>string result <span class="token operator">=</span> collaborator<span class="token punctuation">.</span><span class="token function">UsefulFunctionA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token string">"The result of the B1 collaborating with ( "</span> <span class="token operator">+</span> result <span class="token operator">+</span> <span class="token string">" )"</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ConcreteProductB2</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">AbstractProductB</span></span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  std<span class="token double-colon punctuation">::</span>string <span class="token function">UsefulFunctionB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token keyword">override</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token string">"The result of the product B2."</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token comment">/**
+   * The variant, Product B2, is only able to work correctly with the variant,
+   * Product A2. Nevertheless, it accepts any instance of AbstractProductA as an
+   * argument.
+   */</span>
+  std<span class="token double-colon punctuation">::</span>string <span class="token function">AnotherUsefulFunctionB</span><span class="token punctuation">(</span><span class="token keyword">const</span> AbstractProductA <span class="token operator">&amp;</span>collaborator<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token keyword">override</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> std<span class="token double-colon punctuation">::</span>string result <span class="token operator">=</span> collaborator<span class="token punctuation">.</span><span class="token function">UsefulFunctionA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token string">"The result of the B2 collaborating with ( "</span> <span class="token operator">+</span> result <span class="token operator">+</span> <span class="token string">" )"</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * The Abstract Factory interface declares a set of methods that return
+ * different abstract products. These products are called a family and are
+ * related by a high-level theme or concept. Products of one family are usually
+ * able to collaborate among themselves. A family of products may have several
+ * variants, but the products of one variant are incompatible with products of
+ * another.
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">AbstractFactory</span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token keyword">virtual</span> AbstractProductA <span class="token operator">*</span><span class="token function">CreateProductA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">virtual</span> AbstractProductB <span class="token operator">*</span><span class="token function">CreateProductB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * Concrete Factories produce a family of products that belong to a single
+ * variant. The factory guarantees that resulting products are compatible. Note
+ * that signatures of the Concrete Factory's methods return an abstract product,
+ * while inside the method a concrete product is instantiated.
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">ConcreteFactory1</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">AbstractFactory</span></span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  AbstractProductA <span class="token operator">*</span><span class="token function">CreateProductA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token keyword">override</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token function">ConcreteProductA1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  AbstractProductB <span class="token operator">*</span><span class="token function">CreateProductB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token keyword">override</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token function">ConcreteProductB1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * Each Concrete Factory has a corresponding product variant.
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">ConcreteFactory2</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">AbstractFactory</span></span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  AbstractProductA <span class="token operator">*</span><span class="token function">CreateProductA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token keyword">override</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token function">ConcreteProductA2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  AbstractProductB <span class="token operator">*</span><span class="token function">CreateProductB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token keyword">override</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token function">ConcreteProductB2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * The client code works with factories and products only through abstract
+ * types: AbstractFactory and AbstractProduct. This lets you pass any factory or
+ * product subclass to the client code without breaking it.
+ */</span>
+
+<span class="token keyword">void</span> <span class="token function">ClientCode</span><span class="token punctuation">(</span><span class="token keyword">const</span> AbstractFactory <span class="token operator">&amp;</span>factory<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+  <span class="token keyword">const</span> AbstractProductA <span class="token operator">*</span>product_a <span class="token operator">=</span> factory<span class="token punctuation">.</span><span class="token function">CreateProductA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> AbstractProductB <span class="token operator">*</span>product_b <span class="token operator">=</span> factory<span class="token punctuation">.</span><span class="token function">CreateProductB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> product_b<span class="token operator">-></span><span class="token function">UsefulFunctionB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> product_b<span class="token operator">-></span><span class="token function">AnotherUsefulFunctionB</span><span class="token punctuation">(</span><span class="token operator">*</span>product_a<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>
+  <span class="token keyword">delete</span> product_a<span class="token punctuation">;</span>
+  <span class="token keyword">delete</span> product_b<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Client: Testing client code with the first factory type:\n"</span><span class="token punctuation">;</span>
+  ConcreteFactory1 <span class="token operator">*</span>f1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">ConcreteFactory1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">ClientCode</span><span class="token punctuation">(</span><span class="token operator">*</span>f1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">delete</span> f1<span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout
+    <span class="token operator">&lt;&lt;</span> <span class="token string">"Client: Testing the same client code with the second factory type:\n"</span><span class="token punctuation">;</span>
+  ConcreteFactory2 <span class="token operator">*</span>f2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">ConcreteFactory2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">ClientCode</span><span class="token punctuation">(</span><span class="token operator">*</span>f2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">delete</span> f2<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h3><figure><div class="code-wrapper"><pre class="line-numbers language-text" data-language="text"><code class="language-text">Client: Testing client code with the first factory type:
+The result of the product B1.
+The result of the B1 collaborating with the (The result of the product A1.)
+
+Client: Testing the same client code with the second factory type:
+The result of the product B2.
+The result of the B2 collaborating with the (The result of the product A2.)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
 <style>
   .markdown-body pre code {
